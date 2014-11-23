@@ -33,7 +33,7 @@ cacheSolve <- function(x, ...) {
 }
 
 
-#tests
+##tests
 tested_matrix <- matrix (data = c(1, 3, 5, 2), nrow = 2, ncol = 2)
 tested_matrix
 
@@ -53,3 +53,52 @@ for(i in 1:10){ten_times <- cacheSolve(tested_cache_matrix)}
 ten_times
 identical(expected_solved, ten_times)
 
+## test results
+
+# > tested_matrix <- matrix (data = c(1, 3, 5, 2), nrow = 2, ncol = 2)
+# > tested_matrix
+# [,1] [,2]
+# [1,]    1    5
+# [2,]    3    2
+# > 
+#         > expected_solved <- solve(tested_matrix)
+# > expected_solved
+# [,1]        [,2]
+# [1,] -0.1538462  0.38461538
+# [2,]  0.2307692 -0.07692308
+# > 
+#         > tested_cache_matrix <- makeCacheMatrix(tested_matrix)
+# > tested_cache_matrix$get()
+# [,1] [,2]
+# [1,]    1    5
+# [2,]    3    2
+# > 
+#         > oneTime <- cacheSolve(tested_cache_matrix)
+# > oneTime
+# [,1]        [,2]
+# [1,] -0.1538462  0.38461538
+# [2,]  0.2307692 -0.07692308
+# > identical(expected_solved, oneTime)
+# [1] TRUE
+# > 
+#         > tested_cache_matrix <- makeCacheMatrix(tested_matrix)
+# > tested_cache_matrix$get()
+# [,1] [,2]
+# [1,]    1    5
+# [2,]    3    2
+# > for(i in 1:10){ten_times <- cacheSolve(tested_cache_matrix)}
+# getting cached data
+# getting cached data
+# getting cached data
+# getting cached data
+# getting cached data
+# getting cached data
+# getting cached data
+# getting cached data
+# getting cached data
+# > ten_times
+# [,1]        [,2]
+# [1,] -0.1538462  0.38461538
+# [2,]  0.2307692 -0.07692308
+# > identical(expected_solved, ten_times)
+# [1] TRUE
